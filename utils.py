@@ -91,7 +91,7 @@ def plot_numerical_data(data : pd.DataFrame , column : str):
 
 
 
-def map_data(df):
+def map_data(df, train):
     Gender_map = {'Female': 0, 'Male': 1}
     yes_no_map = {'yes': 1, 'no': 0}
     caec_map = {"no": 0, "Sometimes": 1, "Frequently": 2, "Always": 3}
@@ -101,6 +101,9 @@ def map_data(df):
                 "Obesity_Type_I": 4, "Obesity_Type_II": 5, "Obesity_Type_III": 6}
     
     # Map categorical variables to numerical values
+    if train == True:
+        df['NObeyesdad'] = df['NObeyesdad'].map(target_map)
+    
     df['Gender'] = df['Gender'].map(Gender_map)
     df['family_history'] = df['family_history'].map(yes_no_map)
     df["FAVC"] = df["FAVC"].map(yes_no_map)
@@ -109,5 +112,4 @@ def map_data(df):
     df['SCC'] = df['SCC'].map(yes_no_map)
     df['CALC'] = df['CALC'].map(calc_map)
     df['MTRANS'] = df['MTRANS'].map(mtrans_map)
-    df['NObeyesdad'] = df['NObeyesdad'].map(target_map)
     return df
