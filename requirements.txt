@@ -1,0 +1,7 @@
+matplotlib
+tensorflow
+scikit-learn
+xgboost
+lightgbm
+numpy
+pandas
